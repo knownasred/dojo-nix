@@ -46,8 +46,9 @@
               # include proto & compiled json
               protoFilter = path: _type: builtins.match ".*proto$" path != null;
               jsonFilter = path: _type: builtins.match ".*json$" path != null;
+              sqlFilter = path: _type: builtins.match ".*sql$" path != null;
               sourceFilter = path: type:
-                (protoFilter path type) || (jsonFilter path type) || (craneLib.filterCargoSources path type);
+                (protoFilter path type) || (jsonFilter path type) || (sqlFilter path type) || (craneLib.filterCargoSources path type);
 
 
               src = lib.cleanSourceWith {
