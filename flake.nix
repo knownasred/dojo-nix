@@ -38,8 +38,8 @@
               src_gh = pkgs.fetchFromGitHub {
                 owner = "dojoengine";
                 repo = "dojo";
-                rev = "fbff45b249e2b931f5007edf2d526beef7dc553f";
-                sha256 = "sha256-WQ67S4uApGEXV3RFwzlBn2i9dVRW1MxliC5mAHWq34I=";
+                rev = "b391948911356cbf8a91daa93314809c87411098";
+                sha256 = "sha256-nemrRFlIuOAUNbjv2di7FJypeA9fOEWKA8ESydROTng=";
               };
 
               craneLib = crane.mkLib pkgs;
