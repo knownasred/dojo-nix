@@ -46,8 +46,9 @@
           protoFilter = path: _type: builtins.match ".*proto$" path != null;
           jsonFilter = path: _type: builtins.match ".*json$" path != null;
           sqlFilter = path: _type: builtins.match ".*sql$" path != null;
+          testDataFilter = path: _type: builtins.match ".*/test_data/.*" path != null;
           sourceFilter = path: type:
-            (protoFilter path type) || (jsonFilter path type) || (sqlFilter path type) || (craneLib.filterCargoSources path type);
+            (protoFilter path type) || (jsonFilter path type) || (sqlFilter path type) || (testDataFilter path type) || (craneLib.filterCargoSources path type);
 
 
           src = lib.cleanSourceWith {
@@ -55,6 +56,8 @@
             filter = sourceFilter;
             name = "source"; # Be reproducible, regardless of the directory name
           };
+
+          test = builtins.trace src;
 
           loadedChain = pkgs.rust-bin.stable."1.80.0".default.override {
             extensions = [ "rust-src" ];
