@@ -10,7 +10,6 @@
     };
     crane = {
       url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -163,8 +162,10 @@
             };
 
           crates = builtins.map (x: "${src}/crates/${x}") (builtins.attrNames (builtins.readDir ./crates));
+
+
           fileSetForCrate = crate:
-            pkgs.lib.fileset.toSource {
+            builtins.trace "val: ${src}/examples/spawn-and-move" pkgs.lib.fileset.toSource {
               root = "${src}";
               fileset = lib.fileset.unions ([
                 "${src}/Cargo.toml"
