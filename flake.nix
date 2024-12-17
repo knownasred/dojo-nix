@@ -67,7 +67,7 @@
 
           cairo-zip = pkgs.fetchurl {
             url = "https://github.com/starkware-libs/cairo/archive/refs/tags/v2.8.4.zip";
-            hash = "sha256-jjLEHBXsfCu2CSoXvpev0HMzHxoc2rYE9PsVonPVuTI=";
+            hash = "sha256-kSbvWAra38jZExCCbzz0LZvnk7nTDbmEHNgz3nXlU6g=";
           };
 
           commonArgs = {
